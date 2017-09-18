@@ -33,7 +33,7 @@ export default [
       {
         loc: [19, 22],
         title: 'Higher-order Component',
-        note: 'A component that returns a component',
+        note: 'A function that returns a component',
       },
       { loc: [24, 27] },
     ]}
@@ -49,7 +49,11 @@ export default [
         title: 'HOC Example',
         note: 'if isLoading then show loader else render component',
       },
-      { loc: [1, 6], title: 'WithLoader HOC' },
+      {
+        loc: [1, 6],
+        title: 'WithLoader HOC',
+        note: 'hocFactory:: React.Component → React.Component',
+      },
       {
         loc: [7, 8],
         title: 'Display Name',

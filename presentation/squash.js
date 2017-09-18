@@ -19,8 +19,15 @@ import CodeSlide from 'spectacle-code-slide';
 
 export default [
   <Slide>
-    <Heading size={6} lineHeight={1.25} textColor="tertiary" textAlign="left">
-      Multiple HOCs
+    <Heading textColor="secondary" size={6} lineHeight={1.25} textAlign="left">
+      Composing Multiple HOCs{' '}
+      <Link
+        textColor="tertiary"
+        textSize="0.75em"
+        href="https://codepen.io/winkerVSbecks/pen/GMpYxP"
+      >
+        (CodePen Demo)
+      </Link>
     </Heading>
     <CodePane
       margin="2rem 0 0 0"
@@ -34,29 +41,6 @@ export default [
 
 const EnhancedMyComponent = enhance(MyComponent);`}
     />
-  </Slide>,
-  <Slide>
-    <iframe
-      height="600"
-      scrolling="no"
-      title="Squash Higher-order Components"
-      src="//codepen.io/winkerVSbecks/embed/GMpYxP/?height=300&theme-id=26435&default-tab=js,result&embed-version=2"
-      frameBorder="no"
-      allowTransparency="true"
-      allowFullScreen="true"
-      style={{
-        width: '100%',
-        border: 'none',
-      }}
-    >
-      See the Pen{' '}
-      <a href="https://codepen.io/winkerVSbecks/pen/GMpYxP/">
-        Squash Higher-order Components
-      </a>{' '}
-      by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">
-        @winkerVSbecks
-      </a>) on <a href="https://codepen.io">CodePen</a>.
-    </iframe>
   </Slide>,
   <Slide bgColor="secondary">
     <Heading size={1} lineHeight={1} textColor="primary">
@@ -88,7 +72,7 @@ const EnhancedMyComponent = enhance(MyComponent);`}
       {
         loc: [9, 22],
         note: (
-          <p>
+          <p style={{ margin: 0 }}>
             Create Eager Element –{' '}
             <a
               style={{ color: 'white' }}
@@ -129,13 +113,15 @@ const EnhancedMyComponent = enhance(MyComponent);`}
   </Slide>,
   <Slide>
     <Heading size={6} lineHeight={1.25} textColor="secondary" textAlign="left">
-      Stateless Pure Function HOC<br />Prop Transformers!
+      Stateless Pure Function HOC<br />eg: Prop Transformers!
     </Heading>
     <CodePane
       margin="2rem 0 0 0"
       textSize="1.5rem"
       lang="javascript"
-      source={`const hoc = Component => props => <Component {transform(props)} />;`}
+      source={`const hoc = transform => Component => props => (
+  <Component { ...transform(props) } />;
+)`}
     />
   </Slide>,
   <Slide>
@@ -146,19 +132,20 @@ const EnhancedMyComponent = enhance(MyComponent);`}
       margin="2rem 0 0 0"
       textSize="1.5rem"
       lang="javascript"
-      source={`// This
-compose(
+      source={`compose(
   hoc(bazTransformation),
   hoc(barTransformation),
   hoc(fooTransformation),
-);
+)(MyComponent);
 
-// is equivalent to
-hoc(compose(
-  hoc(bazTransformation),
-  hoc(barTransformation),
-  hoc(fooTransformation),
-));`}
+// The above is equivalent to
+hoc(
+  compose(
+    bazTransformation,
+    barTransformation,
+    fooTransformation,
+  )
+)(MyComponent);`}
     />
   </Slide>,
   <Slide>
@@ -169,7 +156,7 @@ hoc(compose(
       margin="2rem 0 0 0"
       textSize="1.5rem"
       lang="javascript"
-      source={`<withBaz(withBar(withFoo))>
+      source={`<withBaz(withBar(withFoo(MyComponent)))>
 	<MyComponent />
 </withBaz>`}
     />

@@ -17,11 +17,11 @@ const hof = (fn) => (arg) => (
 );
 
 
-const hoc = Component => (arg) => (
+const hocFactory = Component => (arg) => (
   /* modify or enhance Component with arg */
 );
 
 
-const hoc = Component => props => (
+const hocFactory = Component => props => (
   <Component {transform(props)} />
 );
