@@ -1,0 +1,27 @@
+<MyComponent foo="foo" />
+
+
+React.createElement(MyComponent, { foo: 'foo' });
+
+
+MyComponent({ foo: 'foo' })
+
+
+function WithFoo(props) {
+  return createEagerElement(component, {
+    foo: 'foo',
+    ...props
+  });
+}
+
+function createEagerElement = (Component, props) => {
+  if (isReferentiallyTransparentFunctionComponent(Component)) {
+    return Component(props);
+  }
+  return <Component {...props} />;
+}
+
+
+
+
+//
