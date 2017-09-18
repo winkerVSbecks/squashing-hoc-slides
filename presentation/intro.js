@@ -38,16 +38,11 @@ export default [
       source={`
 export connect(mapStateToProps, mapDispatchToProps)(TodoApp)
 
-// Component Tree:
-//
-// <Connect(TodoApp)>
-//   <TodoApp></TodoApp>
-// </Connect(TodoApp)>
 `}
     />
   </Slide>,
   <Slide>
-    <Heading size={5} lineHeight={1} textColor="secondary" textAlign="left">
+    <Heading size={5} lineHeight={1} textColor="tertiary" textAlign="left">
       Higher-order Components
     </Heading>
     <List>

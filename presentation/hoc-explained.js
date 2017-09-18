@@ -17,48 +17,44 @@ import {
 import CodeSlide from 'spectacle-code-slide';
 
 export default [
-  <Slide>
-    <Heading size={5} lineHeight={1} textColor="tertiary" textAlign="left">
-      Higher-order Function
-    </Heading>
-    <Text textSize="1.5rem" margin="2rem 0" textAlign="left">
-      A function that takes and/or returns a function
-    </Text>
-    <CodePane
-      textSize="1.25rem"
-      lang="javascript"
-      source={require('raw-loader!../assets/hof.example')}
-    />
-  </Slide>,
-  <Slide>
-    <Heading size={6} lineHeight={1} textColor="tertiary" textAlign="left">
-      Higher-order Function
-    </Heading>
-    <CodePane
-      margin="2rem 0 4rem 0"
-      textSize="1.25rem"
-      lang="javascript"
-      source={`const adjust = fn => list => list.map(fn); \nconst hof = () => (arg) => /* compute something with arg */`}
-    />
-    <Heading size={6} lineHeight={1} textColor="tertiary" textAlign="left">
-      Higher-order Component
-    </Heading>
-    <CodePane
-      margin="2rem 0 0 0"
-      textSize="1.25rem"
-      lang="javascript"
-      source={`const hoc = ComposedComponent => () => /* modify or enhance Component */\nconst hoc = ComposedComponent => props => <ComposedComponent {transform(props)} />;`}
-    />
-  </Slide>,
+  <CodeSlide
+    transition={[]}
+    textSize="1.5rem"
+    lang="js"
+    code={require('raw-loader!../assets/hof.example')}
+    ranges={[
+      {
+        loc: [0, 9],
+        title: 'Higher-order Function',
+        note: 'A function that returns a function',
+      },
+      { loc: [11, 12], title: 'In ES6' },
+      { loc: [14, 17], title: 'Generic HOF Form' },
+      {
+        loc: [19, 22],
+        title: 'Higher-order Component',
+        note: 'A component that returns a component',
+      },
+      { loc: [24, 27] },
+    ]}
+  />,
   <CodeSlide
     transition={[]}
     textSize="1.25rem"
     lang="js"
     code={require('raw-loader!../assets/hoc.example')}
     ranges={[
-      { loc: [0, 11], title: 'Higher-order Component' },
+      {
+        loc: [0, 11],
+        title: 'HOC Example',
+        note: 'if isLoading then show loader else render component',
+      },
       { loc: [1, 6], title: 'WithLoader HOC' },
-      { loc: [7, 8], title: 'Display Name' },
+      {
+        loc: [7, 8],
+        title: 'Display Name',
+        note: 'eg: WithLoader(MyComponent)',
+      },
       {
         loc: [12, 19],
         title: 'Display Name',

@@ -7,3 +7,21 @@ function adjust(fn) {
 const add2ToEach = adjust(x => x * 2);
 
 add2ToEach([1, 2, 3, 4]); // [2, 4, 6, 8]
+
+
+const adjust = fn => list => list.map(fn);
+
+
+const hof = (fn) => (arg) => (
+  /* compute something with fn & arg */
+);
+
+
+const hoc = Component => (arg) => (
+  /* modify or enhance Component with arg */
+);
+
+
+const hoc = Component => props => (
+  <Component {transform(props)} />
+);

@@ -9,6 +9,7 @@ import {
   Image,
   ListItem,
   List,
+  Link,
   Quote,
   Slide,
   Text,
@@ -18,7 +19,7 @@ import CodeSlide from 'spectacle-code-slide';
 
 export default [
   <Slide>
-    <Heading size={6} lineHeight={1.25} textColor="secondary" textAlign="left">
+    <Heading size={6} lineHeight={1.25} textColor="tertiary" textAlign="left">
       Multiple HOCs
     </Heading>
     <CodePane
@@ -57,45 +58,74 @@ const EnhancedMyComponent = enhance(MyComponent);`}
       </a>) on <a href="https://codepen.io">CodePen</a>.
     </iframe>
   </Slide>,
+  <Slide bgColor="secondary">
+    <Heading size={1} lineHeight={1} textColor="primary">
+      🗜️ Squash!
+    </Heading>
+  </Slide>,
+  <CodeSlide
+    transition={[]}
+    textSize="1.5rem"
+    lang="js"
+    code={require('raw-loader!../assets/squash.example')}
+    ranges={[
+      {
+        loc: [0, 1],
+        title: 'JSX',
+        note: 'but what does this really mean 🤷🏽‍♂️',
+      },
+      { loc: [3, 4], title: 'JSX ➡️ JS', note: 'JSX compiles into this' },
+      {
+        loc: [3, 4],
+        note: "MyComponent doesn't get executed until render time",
+      },
+      {
+        loc: [6, 7],
+        title: 'Eager Evaluation!',
+        note:
+          'Referentially Transparent Components === components that can be called like a function',
+      },
+      {
+        loc: [9, 22],
+        note: (
+          <p>
+            Create Eager Element –{' '}
+            <a
+              style={{ color: 'white' }}
+              href="https://s.codepen.io/winkerVSbecks/debug/ZXQOZR"
+            >
+              demo!
+            </a>
+          </p>
+        ),
+      },
+    ]}
+  />,
   <Slide>
     <Heading size={6} lineHeight={1.25} textColor="secondary" textAlign="left">
-      JSX
+      Eager Evaluation in Recompose{' '}
+      <Text textSize="0.5em" textColor="secondary">
+        <Link
+          textColor="tertiary"
+          href="https://github.com/acdlite/recompose/blob/master/src/packages/recompose/createEagerElement.js"
+        >
+          createEagerElement
+        </Link>{' '}
+        &{' '}
+        <Link
+          textColor="tertiary"
+          href="https://github.com/acdlite/recompose/blob/master/src/packages/recompose/isReferentiallyTransparentFunctionComponent.js"
+        >
+          isReferentiallyTransparentFunctionComponent
+        </Link>
+      </Text>
     </Heading>
     <CodePane
       margin="2rem 0 0 0"
-      textSize="1.5rem"
+      textSize="1rem"
       lang="javascript"
-      source={`// This JSX
-<MyComponent foo="foo" />
-
-
-// Compiles into
-React.createElement(MyComponent, { foo: "foo" });
-`}
+      source={require('!raw-loader!../assets/create-eager-element.example')}
     />
-  </Slide>,
-  <Slide>
-    <Heading size={6} lineHeight={1.25} textColor="secondary" textAlign="left">
-      Eager Evaluation of Referentially Transparent Component
-    </Heading>
-    <Text textSize="1.5rem" textAlign="left" textColor="#777" margin="2rem 0">
-      Components that can be called like a function
-    </Text>
-    <CodePane
-      margin="2rem 0 0 0"
-      textSize="1.5rem"
-      lang="javascript"
-      source={`// Instead of using JSX
-<MyComponent foo="foo" />
-
-
-// Evaluate is as a function
-MyComponent({ foo: 'foo' })
-`}
-    />
-  </Slide>,
-  <Slide>
-    https://github.com/acdlite/recompose/blob/master/src/packages/recompose/createEagerElement.js
   </Slide>,
   <Slide>
     <Heading size={6} lineHeight={1.25} textColor="secondary" textAlign="left">
@@ -110,7 +140,7 @@ MyComponent({ foo: 'foo' })
   </Slide>,
   <Slide>
     <Heading size={6} lineHeight={1.25} textColor="secondary" textAlign="left">
-      Prop Transformers – Distributive Property of Composition
+      Distributive Property of Composition
     </Heading>
     <CodePane
       margin="2rem 0 0 0"
@@ -129,6 +159,19 @@ hoc(compose(
   hoc(barTransformation),
   hoc(fooTransformation),
 ));`}
+    />
+  </Slide>,
+  <Slide>
+    <Heading size={6} lineHeight={1.25} textColor="secondary" textAlign="left">
+      Squashed 🤐
+    </Heading>
+    <CodePane
+      margin="2rem 0 0 0"
+      textSize="1.5rem"
+      lang="javascript"
+      source={`<withBaz(withBar(withFoo))>
+	<MyComponent />
+</withBaz>`}
     />
   </Slide>,
 ];
