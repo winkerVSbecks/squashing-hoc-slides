@@ -76,6 +76,29 @@ React.createElement(MyComponent, { foo: "foo" });
   </Slide>,
   <Slide>
     <Heading size={6} lineHeight={1.25} textColor="secondary" textAlign="left">
+      Eager Evaluation of Referentially Transparent Component
+    </Heading>
+    <Text textSize="1.5rem" textAlign="left" textColor="#777" margin="2rem 0">
+      Components that can be called like a function
+    </Text>
+    <CodePane
+      margin="2rem 0 0 0"
+      textSize="1.5rem"
+      lang="javascript"
+      source={`// Instead of using JSX
+<MyComponent foo="foo" />
+
+
+// Evaluate is as a function
+MyComponent({ foo: 'foo' })
+`}
+    />
+  </Slide>,
+  <Slide>
+    https://github.com/acdlite/recompose/blob/master/src/packages/recompose/createEagerElement.js
+  </Slide>,
+  <Slide>
+    <Heading size={6} lineHeight={1.25} textColor="secondary" textAlign="left">
       Stateless Pure Function HOC<br />Prop Transformers!
     </Heading>
     <CodePane
@@ -87,22 +110,25 @@ React.createElement(MyComponent, { foo: "foo" });
   </Slide>,
   <Slide>
     <Heading size={6} lineHeight={1.25} textColor="secondary" textAlign="left">
-      Eager Evaluation
+      Prop Transformers – Distributive Property of Composition
     </Heading>
     <CodePane
       margin="2rem 0 0 0"
       textSize="1.5rem"
       lang="javascript"
-      source={`// Instead of using JSX
-<MyComponent foo="foo" />
+      source={`// This
+compose(
+  hoc(bazTransformation),
+  hoc(barTransformation),
+  hoc(fooTransformation),
+);
 
-
-// Evaluate function
-MyComponent({ foo: 'foo' })
-`}
+// is equivalent to
+hoc(compose(
+  hoc(bazTransformation),
+  hoc(barTransformation),
+  hoc(fooTransformation),
+));`}
     />
-  </Slide>,
-  <Slide>
-    https://github.com/acdlite/recompose/blob/master/src/packages/recompose/createEagerElement.js
   </Slide>,
 ];
