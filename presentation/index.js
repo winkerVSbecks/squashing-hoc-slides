@@ -89,10 +89,24 @@ export default class Presentation extends React.Component {
         {React.Children.toArray(intro)}
         {React.Children.toArray(hocExplained)}
         {React.Children.toArray(squash)}
-        <Slide bgColor="primary">
-          <Heading size={3} textColor="tertiary">
+        <Slide bgColor="#000">
+          <Heading
+            size={3}
+            textColor="#000"
+            textAlign="left"
+            padding="2rem"
+            margin="0 0 4rem 0"
+            bgColor="white"
+          >
             Thank You!
           </Heading>
+          <Text
+            textColor="white"
+            textAlign="left"
+            style={{ fontFamily: 'monospace' }}
+          >
+            @winkerVSbecks
+          </Text>
         </Slide>
       </Deck>
     );

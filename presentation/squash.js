@@ -6,7 +6,10 @@ import {
   CodePane,
   Deck,
   Heading,
+  Fit,
+  Fill,
   Image,
+  Layout,
   ListItem,
   List,
   Link,
@@ -16,6 +19,13 @@ import {
   MarkdownSlides,
 } from 'spectacle';
 import CodeSlide from 'spectacle-code-slide';
+import preloader from 'spectacle/lib/utils/preloader';
+
+const images = {
+  tree: require('../assets/tree.png'),
+};
+
+preloader(images);
 
 export default [
   <Slide>
@@ -41,6 +51,22 @@ export default [
 
 const EnhancedMyComponent = enhance(MyComponent);`}
     />
+  </Slide>,
+  <Slide bgColor="primary" textColor="secondary" margin="0">
+    <Heading textColor="secondary" size={4} lineHeight={1.5} textAlign="left">
+      Challenges
+    </Heading>
+    <Layout>
+      <Fill>
+        <List margin="0 2rem 0 0">
+          <ListItem margin="1rem 0">Performance</ListItem>
+          <ListItem margin="1rem 0">Debugging</ListItem>
+        </List>
+      </Fill>
+      <Fit>
+        <Image src={images.tree} width={650} />
+      </Fit>
+    </Layout>
   </Slide>,
   <Slide bgColor="secondary">
     <Heading size={1} lineHeight={1} textColor="primary">
