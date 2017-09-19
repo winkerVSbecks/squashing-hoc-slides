@@ -1,21 +1,21 @@
-<MyComponent foo="foo" />
+<Greet name="varun" />
 
 
-React.createElement(MyComponent, { foo: 'foo' });
+React.createElement(Greet, { name: 'varun' });
 
 
-MyComponent({ foo: 'foo' })
+Greet({ name: 'varun' })
 
 
-function WithFoo(props) {
-  return createEagerElement(component, {
+function WithFooHOC(props) {
+  return createEagerElement(ComposedComponent, {
     foo: 'foo',
     ...props
   });
 }
 
-function createEagerElement = (Component, props) => {
-  if (isReferentiallyTransparentFunctionComponent(Component)) {
+function createEagerElement(Component, props) => {
+  if (isReferentiallyTransparent(Component)) {
     return Component(props);
   }
   return <Component {...props} />;

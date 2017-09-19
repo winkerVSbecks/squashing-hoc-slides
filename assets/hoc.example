@@ -1,13 +1,17 @@
 function withLoader(ComposedComponent) {
-  function WithLoader({ isLoading, ...passThroughProps }) {
+  function WithLoaderHOC({ isLoading, ...passThroughProps }) {
     return (
-      isLoading ? <Loader /> : <ComposedComponent {...passThroughProps} />
+      isLoading ?
+        <Loader /> :
+        <ComposedComponent {...passThroughProps} />
     );
   }
 
-  WithLoader.displayName = `WithLoader(${getDisplayName(ComposedComponent)})`;
+  WithLoaderHOC.displayName = (
+    `WithLoader(${getDisplayName(ComposedComponent)})`
+  );
 
-  return WithLoader;
+  return WithLoaderHOC;
 }
 
 function getDisplayName(ComposedComponent) {

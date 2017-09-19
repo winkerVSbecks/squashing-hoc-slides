@@ -34,7 +34,7 @@ export default [
       <Link
         textColor="tertiary"
         textSize="0.75em"
-        href="https://codepen.io/winkerVSbecks/pen/GMpYxP"
+        href="https://codepen.io/winkerVSbecks/pres/GMpYxP"
       >
         (CodePen Demo)
       </Link>
@@ -75,7 +75,7 @@ const EnhancedMyComponent = enhance(MyComponent);`}
   </Slide>,
   <CodeSlide
     transition={[]}
-    textSize="1.5rem"
+    textSize="1.8rem"
     lang="js"
     code={require('raw-loader!../assets/squash.example')}
     ranges={[
@@ -117,9 +117,9 @@ const EnhancedMyComponent = enhance(MyComponent);`}
       <Text textSize="0.5em" textColor="secondary">
         <Link
           textColor="tertiary"
-          href="https://github.com/acdlite/recompose/blob/master/src/packages/recompose/createEagerElement.js"
+          href="https://github.com/acdlite/recompose/blob/master/src/packages/recompose/utils/createEagerElementUtil.js"
         >
-          createEagerElement
+          createEagerElementUtil
         </Link>{' '}
         &{' '}
         <Link
@@ -145,8 +145,8 @@ const EnhancedMyComponent = enhance(MyComponent);`}
       margin="2rem 0 0 0"
       textSize="1.5rem"
       lang="javascript"
-      source={`const hoc = transform => Component => props => (
-  <Component { ...transform(props) } />;
+      source={`const hocFactory = transform => ComposedComponent => props => (
+  <ComposedComponent { ...transform(props) } />;
 )`}
     />
   </Slide>,
@@ -159,13 +159,13 @@ const EnhancedMyComponent = enhance(MyComponent);`}
       textSize="1.5rem"
       lang="javascript"
       source={`compose(
-  hoc(bazTransformation),
-  hoc(barTransformation),
-  hoc(fooTransformation),
+  hocFactory(bazTransformation),
+  hocFactory(barTransformation),
+  hocFactory(fooTransformation),
 )(MyComponent);
 
 // The above is equivalent to
-hoc(
+hocFactory(
   compose(
     bazTransformation,
     barTransformation,
