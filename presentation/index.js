@@ -53,14 +53,6 @@ export default class Presentation extends React.Component {
   render() {
     return (
       <Deck transition={[]} transitionDuration={0} progress="bar" theme={theme}>
-        <Slide bgColor="tertiary">
-          <Heading size={4} lineHeight={1} textColor="primary">
-            Squashing 🤐
-          </Heading>
-          <Heading size={4} lineHeight={1.25} textColor="primary">
-            🗜️ Higher-order Components
-          </Heading>
-        </Slide>
         <Slide bgColor="primary">
           <Text textAlign="left" margin="0 0 5rem 0">
             <Image src={images.me} margin="0" width={128} height={128} />
@@ -85,6 +77,14 @@ export default class Presentation extends React.Component {
               varun.ca
             </Link>
           </Text>
+        </Slide>
+        <Slide bgColor="tertiary">
+          <Heading size={4} lineHeight={1} textColor="primary">
+            Squashing 🤐
+          </Heading>
+          <Heading size={4} lineHeight={1.25} textColor="primary">
+            🗜️ Higher-order Components
+          </Heading>
         </Slide>
         {React.Children.toArray(intro)}
         {React.Children.toArray(hocExplained)}

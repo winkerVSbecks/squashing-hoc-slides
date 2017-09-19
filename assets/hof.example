@@ -4,7 +4,7 @@ function adjust(fn) {
   }
 }
 
-const add2ToEach = adjust(x => x * 2);
+const add2ToEach = adjust(x => x + 2);
 
 add2ToEach([1, 2, 3, 4]); // [2, 4, 6, 8]
 
@@ -17,11 +17,6 @@ const hof = (fn) => (arg) => (
 );
 
 
-const hocFactory = Component => (arg) => (
-  /* modify or enhance Component with arg */
-);
-
-
-const hocFactory = Component => props => (
-  <Component {transform(props)} />
+const hoc = ComposedComponent => (props) => (
+  /* enhance ComposedComponent */
 );

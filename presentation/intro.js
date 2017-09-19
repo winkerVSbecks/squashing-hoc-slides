@@ -17,26 +17,26 @@ import {
 import CodeSlide from 'spectacle-code-slide';
 
 export default [
-  <Slide bgColor="tertiary">
-    <Heading size={1} lineHeight={1} textColor="primary">
-      Higher-order Components
-    </Heading>
-  </Slide>,
+  // <Slide bgColor="tertiary">
+  //   <Heading size={1} lineHeight={1} textColor="primary">
+  //     Higher-order Components
+  //   </Heading>
+  // </Slide>,
   <Slide bgColor="primary">
     <Heading
-      size={5}
+      size={6}
       lineHeight={1}
       textColor="secondary"
       textAlign="left"
       margin="2rem 0"
     >
-      React Redux Connect
+      Higher-order Components in the Wild
     </Heading>
     <CodePane
-      textSize="1.25rem"
+      textSize="1.8rem"
       lang="javascript"
       source={`
-export connect(mapStateToProps, mapDispatchToProps)(TodoApp)
+connect(mapStateToProps, mapDispatchToProps)(TodoApp)
 
 `}
     />
