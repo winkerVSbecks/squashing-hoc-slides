@@ -12,8 +12,8 @@ add2ToEach([1, 2, 3, 4]); // [2, 4, 6, 8]
 const adjust = fn => list => list.map(fn);
 
 
-const hof = (fn) => (arg) => (
-  /* compute something with fn & arg */
+const hof = (composedFn) => (args) => (
+  /* compute something with composedFn & args */
 );
 
 
