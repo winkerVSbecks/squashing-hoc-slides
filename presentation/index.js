@@ -107,6 +107,13 @@ export default class Presentation extends React.Component {
           >
             @winkerVSbecks
           </Text>
+          <Text
+            textColor="white"
+            textAlign="left"
+            style={{ fontFamily: 'monospace' }}
+          >
+            http://tiny.cc/squash-hoc
+          </Text>
         </Slide>
       </Deck>
     );
