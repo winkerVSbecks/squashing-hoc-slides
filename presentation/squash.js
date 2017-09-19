@@ -79,22 +79,13 @@ const EnhancedMyComponent = enhance(MyComponent);`}
     lang="js"
     code={require('raw-loader!../assets/squash.example')}
     ranges={[
-      {
-        loc: [0, 1],
-        title: 'JSX',
-        note: 'but what does this really mean 🤷🏽‍♂️',
-      },
-      { loc: [3, 4], title: 'JSX ➡️ JS', note: 'JSX compiles into this' },
+      { loc: [0, 1], title: 'JSX' },
+      { loc: [3, 4], title: 'JSX ➡️ JS' },
       {
         loc: [3, 4],
-        note: "MyComponent doesn't get executed until render time",
+        note: 'Greeting does not get executed until render time',
       },
-      {
-        loc: [6, 7],
-        title: 'Eager Evaluation!',
-        note:
-          'Referentially Transparent Components === components that can be called like a function',
-      },
+      { loc: [6, 7], title: 'Eager Evaluation!' },
       {
         loc: [9, 22],
         note: (
@@ -108,6 +99,11 @@ const EnhancedMyComponent = enhance(MyComponent);`}
             </a>
           </p>
         ),
+      },
+      {
+        loc: [17, 20],
+        note:
+          'Referentially Transparent Components === components that can be called like a function',
       },
     ]}
   />,
@@ -139,7 +135,7 @@ const EnhancedMyComponent = enhance(MyComponent);`}
   </Slide>,
   <Slide>
     <Heading size={6} lineHeight={1.25} textColor="secondary" textAlign="left">
-      Stateless Pure Function HOC<br />eg: Prop Transformers!
+      Prop Transformers
     </Heading>
     <CodePane
       margin="2rem 0 0 0"
